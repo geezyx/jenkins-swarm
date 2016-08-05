@@ -9,7 +9,11 @@ RUN apt-get update && \
     apt-get clean
 RUN pip install --upgrade git+git://github.com/ansible/ansible.git@devel
 
+# Fix workdir perms
+RUN chown jenkins:jenkins /var/jenkins_home
+
 USER jenkins
 WORKDIR /var/jenkins_home
+
 
 ENTRYPOINT ["/run.sh"]
