@@ -9,9 +9,6 @@ RUN apt-get update && \
     apt-get clean
 RUN pip install --upgrade git+git://github.com/ansible/ansible.git@devel
 
-# Fix workdir perms
-RUN chown jenkins:jenkins /var/jenkins_home/workspace
-
 USER jenkins
 WORKDIR /var/jenkins_home
 
